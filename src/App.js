@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
 import NavBar from './components/navBar.jsx';
 import Movies from './components/movies';
 import Customers from './components/customers';
 import Rentals from './components/rentals';
 import NotFound from './components/notFound';
+import './App.css';
 import { render } from '@testing-library/react';
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
       <NavBar />
       <main className='container'>
         <Switch>
@@ -22,7 +22,7 @@ function App() {
           <Redirect to='/not-found' />
         </Switch>
       </main>
-    </div>
+    </React.Fragment>
   );
 }
 
