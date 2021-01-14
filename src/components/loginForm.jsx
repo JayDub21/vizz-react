@@ -1,5 +1,5 @@
 import React from 'react';
-import Joi from 'joi';
+import Joi from 'joi-browser';
 import Form from './common/form';
 
 class LoginForm extends Form {
@@ -8,13 +8,11 @@ class LoginForm extends Form {
     errors: {},
   };
 
-  validateLogin = (login) => {
-    const schema = Joi.object({
+
+    schema = {
       username: Joi.string().required().label('Username'),
       password: Joi.string().required().label('Password'),
-    });
-    return schema.validate(login);
-  };
+    };
 
   doSubmit = () => {
     // call the server

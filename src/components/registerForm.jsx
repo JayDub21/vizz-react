@@ -1,5 +1,5 @@
 import React from 'react';
-import Joi from 'joi';
+import Joi from 'joi-browser';
 import Form from './common/form';
 
 class RegisterForm extends Form {
@@ -8,17 +8,15 @@ class RegisterForm extends Form {
     errors: {},
   };
 
-  validateRegister = (register) => {
-    const schema = Joi.object({
+
+    schema = {
       username: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
         .required()
         .label('Username'),
       password: Joi.string().required().min(5).label('Password'),
       name: Joi.string().alphanum().min(3).max(30).required().label('Name'),
-    });
-    return schema.validate(register);
-  };
+    };
 
   doSubmit = () => {
     console.log('Register From Sent');
