@@ -19,7 +19,9 @@ function log(error) {
   console.log(error);
 }
 
-export default {
+const logger = {
   init,
   log,
 };
+
+export default logger;
