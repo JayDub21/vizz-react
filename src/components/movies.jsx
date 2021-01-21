@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import _ from 'lodash';
 import Pagination from './common/pagination';
 import ListGroup from './common/listGroup';
 import MoviesTable from './moviesTable';
 import { paginate } from '../utils/paginate';
 import { getGenres } from '../services/genreService';
-import { getMovies } from '../services/fakeMovieService';
+import { getMovies } from '../services/movieService';
 import SearchBox from './searchBox';
+import { deleteMovie } from '../services/movieService';
 
 class Movies extends Component {
   state = {
@@ -24,12 +26,23 @@ class Movies extends Component {
     const { data } = await getGenres();
     const genres = [{ _id: '', name: 'All Genres' }, ...data];
 
-    this.setState({ movies: getMovies(), genres });
+    const { data: movies } = await getMovies();
+    this.setState({ movies, genres });
   }
 
-  handleDelete = (movie) => {
-    const movies = this.state.movies.filter((m) => m._id !== movie._id);
+  handleDelete = async (movie) => {
+    const originalMovies = this.state.movies;
+    const movies = originalMovies.filter((m) => m._id !== movie._id);
     this.setState({ movies });
+
+    try {
+      await deleteMovie(movie._id);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        toast.error('This movie has already been deleted');
+
+      this.setState({ movies: originalMovies });
+    }
   };
 
   handleLike = (movie) => {
