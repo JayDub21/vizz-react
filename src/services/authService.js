@@ -28,11 +28,17 @@ function logout() {
   localStorage.removeItem(tokenKey);
 }
 
+function getJwt() {
+  return localStorage.getItem(tokenKey);
+}
+http.setJwt(getJwt());
+
 const auth = {
   login,
   loginWithJwt,
   getCurrentUser,
   logout,
+  getJwt,
 };
 
 export default auth;
