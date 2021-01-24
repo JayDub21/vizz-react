@@ -1,6 +1,6 @@
 import React from 'react';
 import Joi from 'joi-browser';
-import { login } from '../services/authService';
+import auth from '../services/authService';
 import Form from './common/form';
 
 class LoginForm extends Form {
@@ -17,8 +17,7 @@ class LoginForm extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      const { data: jwt } = await login(data.username, data.password);
-      localStorage.setItem('token', jwt);
+      await auth.login(data.username, data.password);
       // window.location instead of history.push re-runs componentDidMount in app.js
       // so that the user name and logout appears after login.
       window.location = '/';
