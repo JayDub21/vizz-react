@@ -1,6 +1,6 @@
 import http from './httpService';
 
-const apiEndpoint = apiUrl + '/movies';
+const apiEndpoint = '/movies';
 
 function movieUrl(id) {
   return `/${id}`;
