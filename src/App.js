@@ -32,21 +32,29 @@ class App extends Component {
         <NavBar user={user} />
         <main className='container'>
           <Switch>
+            <Redirect from='/' exact to='/movies' />
+
             <Route path='/register' component={RegisterForm} />
+
             <Route path='/login' component={LoginForm} />
+
             <Route path='/logout' component={Logout} />
+
             <ProtectedRoute path='/movies/:id' component={MovieForm} />
+
             <Route
               path='/movies'
               render={(props) => <Movies {...props} user={user} />}
             />
+
             <ProtectedRoute path='/customers' component={Customers} />
+
             <ProtectedRoute
               path={user}
               render={(props) => <User {...props} user={user} />}
             />
             <Route path='/not-found' component={NotFound} />
-            <Redirect from='/' exact to='/movies' />
+
             <Redirect to='/not-found' />
           </Switch>
         </main>
