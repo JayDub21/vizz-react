@@ -8,9 +8,9 @@ import RegisterForm from './components/registerForm';
 import Movies from './components/movies';
 import MovieForm from './components/movieForm';
 import Customers from './components/customers';
-import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import ProtectedRoute from './components/common/protectedRoute';
+import User from './components/user';
 import auth from './services/authService';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -38,10 +38,13 @@ class App extends Component {
             <ProtectedRoute path='/movies/:id' component={MovieForm} />
             <Route
               path='/movies'
-              render={(props) => <Movies {...props} user={this.state.user} />}
+              render={(props) => <Movies {...props} user={user} />}
             />
-            <Route path='/customers' component={Customers} />
-            <Route path='/rentals' component={Rentals} />
+            <ProtectedRoute path='/customers' component={Customers} />
+            <ProtectedRoute
+              path={user}
+              render={(props) => <User {...props} user={user} />}
+            />
             <Route path='/not-found' component={NotFound} />
             <Redirect from='/' exact to='/movies' />
             <Redirect to='/not-found' />
