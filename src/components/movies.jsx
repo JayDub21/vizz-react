@@ -113,7 +113,7 @@ class Movies extends Component {
         <div className='col'>
           {user && (
             <Link to='/movies/new'>
-              <button className='btn btn-primary mb-2'>New Movie</button>
+              <button className='btn btn-primary mt-2 mb-2'>New Movie</button>
             </Link>
           )}
 

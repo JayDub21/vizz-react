@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../index.css';
 
 const ListGroup = ({
   items,
@@ -8,11 +9,12 @@ const ListGroup = ({
   selectedItem,
 }) => {
   return (
-    <ul className='list-group'>
+    <ul className='list-group mt-2'>
       {items.map((item) => (
         <li
           onClick={() => onItemSelect(item)}
           key={item[valueProperty]}
+          id='genreList'
           className={
             item === selectedItem ? 'list-group-item active' : 'list-group-item'
           }

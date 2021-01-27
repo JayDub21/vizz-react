@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/jquery/dist/jquery.slim';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import 'font-awesome/css/font-awesome.css';
+import './index.css';
 
 ReactDOM.render(
   <BrowserRouter>

@@ -12,7 +12,6 @@ import NotFound from './components/notFound';
 import ProtectedRoute from './components/common/protectedRoute';
 import User from './components/user';
 import auth from './services/authService';
-import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 class App extends Component {

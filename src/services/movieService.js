@@ -15,8 +15,8 @@ export function getMovie(movieId) {
 }
 export function saveMovie(movie) {
   if (movie._id) {
-    // Spread the movie object and remove the id
-    // bc there is an id in the url, and the body.
+    // Spread the movie object and remove the id bc
+    // there is already an id in the url, and the body.
     // So remove the id from movie and leave the
     // rest of the data in the body.
     const body = { ...movie };
