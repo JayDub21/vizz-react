@@ -19,11 +19,13 @@ class LoginForm extends Form {
     try {
       const { data } = this.state;
       await auth.login(data.username, data.password);
-      // window.location instead of history.push re-runs componentDidMount in app.js
-      // so that the user name and logout appears after login.
 
       const { state } = this.props.location;
+
       window.location = state ? state.from.pathname : '/';
+
+      // window.location instead of history.push re-runs componentDidMount in app.js
+      // so that the user name and logout appears after login.
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
