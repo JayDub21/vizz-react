@@ -14,7 +14,3 @@ code {
 .clickable {
   cursor: pointer;
 }
-
-#genreList {
-  padding-right: 90px;
-}
