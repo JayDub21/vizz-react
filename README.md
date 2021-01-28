@@ -1,6 +1,8 @@
 # Vizz App Front End 
 
-## Built using React
+## [View Vizz Here!](https://vast-falls-24245.herokuapp.com/movies)
+
+### Built using React & Linked to [Vizz Node.js Backend](https://github.com/JayDub21/vizz-node)
 
 * react-dom
 * react-router-dom
