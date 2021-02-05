@@ -4,6 +4,10 @@
 
 ### Built using React & Linked to [Vizz Node.js Backend](https://github.com/JayDub21/vizz-node)
 
+![Vizz](/public/Vizz.png)
+
+### Node Packages Used:
+
 - react-dom
 - react-router-dom
 - react-sricpts
