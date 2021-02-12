@@ -3,13 +3,13 @@ import FavoritesTable from './favoritesTable';
 import Pagination from './common/pagination';
 import SearchBox from './searchBox';
 import ListGroup from './common/listGroup';
+import auth from '../services/authService';
 import _ from 'lodash';
 import { toast } from 'react-toastify';
 import { paginate } from '../utils/paginate';
 import { getGenres } from '../services/genreService';
 import { getMovies } from '../services/movieService';
 import { deleteMovie } from '../services/movieService';
-import auth from '../services/authService';
 
 class User extends Component {
   state = {
@@ -31,7 +31,7 @@ class User extends Component {
     this.setState({ genres, movies });
 
     const user = auth.getCurrentUser();
-    console.log(user);
+    // console.log(user);
   }
 
   handleDelete = async (movie) => {

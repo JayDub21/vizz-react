@@ -6,10 +6,12 @@ import Pagination from './common/pagination';
 import ListGroup from './common/listGroup';
 import MoviesTable from './moviesTable';
 import SearchBox from './searchBox';
+import auth from '../services/authService';
 import { paginate } from '../utils/paginate';
 import { getGenres } from '../services/genreService';
 import { getMovies } from '../services/movieService';
 import { deleteMovie } from '../services/movieService';
+import { addFavorite } from '../services/userService';
 
 class Movies extends Component {
   state = {
@@ -28,6 +30,9 @@ class Movies extends Component {
 
     const { data: movies } = await getMovies();
     this.setState({ movies, genres });
+
+    const user = auth.getCurrentUser();
+    console.log(user);
   }
 
   handleDelete = async (movie) => {
@@ -51,6 +56,9 @@ class Movies extends Component {
     movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
     this.setState({ movies });
+    if (movies[index].liked) {
+      addFavorite(movie);
+    }
   };
 
   handlePageChange = (page) => {

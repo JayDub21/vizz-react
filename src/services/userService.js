@@ -9,3 +9,9 @@ export function register(user) {
     name: user.name,
   });
 }
+
+export function addFavorite(movie) {
+  return http.post(apiEndpoint, { favorites: JSON.stringify(movie._id) });
+}
+
+
