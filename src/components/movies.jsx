@@ -5,10 +5,10 @@ import _ from 'lodash';
 import Pagination from './common/pagination';
 import ListGroup from './common/listGroup';
 import MoviesTable from './moviesTable';
+import SearchBox from './searchBox';
 import { paginate } from '../utils/paginate';
 import { getGenres } from '../services/genreService';
 import { getMovies } from '../services/movieService';
-import SearchBox from './searchBox';
 import { deleteMovie } from '../services/movieService';
 
 class Movies extends Component {
@@ -95,10 +95,8 @@ class Movies extends Component {
   };
 
   render() {
-    const { length: count } = this.state.movies;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
-
     const { totalCount, data: movies } = this.getPagedData();
 
     return (
